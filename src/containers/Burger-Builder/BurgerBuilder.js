@@ -87,7 +87,7 @@ class BurgerBuilder extends Component {
     for (let key in disabledInfo){
 
       disabledInfo [key] = disabledInfo[key]<=0;
-      console.log(disabledInfo [key]);
+
     }
     return(
       <Aux>
