@@ -6,13 +6,13 @@ import Backdrop from '../Backdrop/Backdrop';
 class Modal extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
-    console.log('nextProps.show is: ' + nextProps.show);
-    console.log('this.props.show is: ' + this.props.show);
+    // console.log('nextProps.show is: ' + nextProps.show);
+    // console.log('this.props.show is: ' + this.props.show);
     return nextProps.show !== this.props.show;
   }
 
   render() {
-    console.log('[render()]-> this.props.show is: ' + this.props.show);
+    // console.log('[render()]-> this.props.show is: ' + this.props.show);
     return (<Aux>
       <Backdrop show={this.props.show} clicked={this.props.modalClosed}/>
       <div className={classes.Modal} style={{
