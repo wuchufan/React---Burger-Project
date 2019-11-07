@@ -35,7 +35,6 @@ class ContactData extends Component {
     }
     axios.post('/orders.json', order)
     .then(response=>{
-
       this.setState({loading: false});
 
       this.props.history.push('/');
@@ -54,7 +53,7 @@ class ContactData extends Component {
         <input className={classes.Input} type="text" name="postal" placeholder="Postal Code"></input>
         <Button btnType="Success" clicked={this.orderHandler}>Order</Button>
 
-    </form>);
+      </form>);
     if (this.state.loading){
       form = <Spinner/>;
     }

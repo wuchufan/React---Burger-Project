@@ -30,7 +30,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://react-my-burger-b096a.firebaseio.com/orders/ingredients.json')
+    axios.get('https://react-my-burger-b096a.firebaseio.com/ingredients.json')
     .then(response=>{
       this.setState({ingredients:response.data});
 
@@ -142,7 +142,6 @@ class BurgerBuilder extends Component {
 
     return(
       <Aux>
-        
         <Modal show={this.state.purchasing} modalClosed={this.PurchaseCancel}>
           {orderSummary}
         </Modal>
