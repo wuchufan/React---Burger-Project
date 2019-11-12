@@ -82,12 +82,12 @@ class ContactData extends Component {
                 {value:'cheapest',displayValue:'Cheapest'}]
         },
         value:"Fastest",
-
+        valid:true
 
       }
     },
 
-
+    formIsValid:false,
     loading: false
   }
 
@@ -145,7 +145,14 @@ inputChangedHandler=(event, inputIdentifier)=>{
   updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
   updatedOrderForm[inputIdentifier]= updatedFormElement;
   updatedFormElement.touched= true;
-  this.setState({orderForm:updatedOrderForm});
+
+  let formIsValid = true;
+  for (let inputIdentifier in updatedOrderForm){
+    //the logic for this line is that, as long as formIsValid turns to false, nothing can change it back to true
+    formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+  }
+
+  this.setState({orderForm:updatedOrderForm, formIsValid:formIsValid});
 
 }
 
@@ -173,7 +180,7 @@ render() {
           touched={formElement.config.touched}
           key={formElement.id}></Input>
       ))}
-      <Button btnType="Success">Order</Button>
+      <Button btnType="Success" disabled={!this.state.formIsValid}>Order</Button>
 
   </form>);
   if (this.state.loading) {
